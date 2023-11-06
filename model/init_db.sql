@@ -21,8 +21,10 @@ CREATE TABLE questions(
     );
 
 DROP TABLE if exists multipleChoiceAnswers;
-CREATE TABLE multipleChoiceAnswers(
-    multipleChoiceAnswers_id INT NOT NULL AUTO_INCREMENT, 
-    questions VARCHAR(40) not null, 
-    PRIMARY KEY (multipleChoiceAnswers_id)
-    );
+CREATE TABLE MultipleChoiceAnswers (
+    answer_id INT PRIMARY KEY,
+    answer_text TEXT,
+    is_correct BOOLEAN,
+    question_id INT,
+    FOREIGN KEY (question_id) REFERENCES Questions(question_id)
+);
