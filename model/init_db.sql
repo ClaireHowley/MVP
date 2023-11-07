@@ -2,8 +2,7 @@
 -- Drop Tables
 --
 
--- SET foreign_key_checks = 0;
--- SET foreign_key_checks = 1;
+
 
 -- SET foreign_key_checks = 0;
 -- SET foreign_key_checks = 1;
@@ -12,6 +11,8 @@
 --
 -- Create Tables
 --
+
+SET foreign_key_checks = 0; 
 
 DROP TABLE if exists questions;
 CREATE TABLE questions (
@@ -37,3 +38,22 @@ CREATE TABLE description (
     description_body TEXT,
     image_url VARCHAR(255) 
 );
+
+
+INSERT INTO questions (questions) VALUES 
+("Η Μαρία (πίνω) καφέ."), 
+("Εμείς (αγοράζω) φρούτα στη λαϊκή."),
+("Εσύ (παίζω) πιάνο."), 
+("Ο Νίκος και η Ελένη (δουλεύω) κάθε μέρα."), 
+("Ο Χανς δεν (καταλαβαίνω) ελληνικά."), 
+("Η Σοφία (μαθαίνω) ελληνικά."),
+("Τα παιδιά (βλέπω) τηλεόραση."),
+("Ο παππούς (διαβάζω) εφημερίδα."),
+("Εμείς (αγαπώ) την Ελλάδα."),
+("Εσείς (πηγαίνω) στο θέατρο συχνά;");
+
+
+
+
+
+SET foreign_key_checks = 1;
