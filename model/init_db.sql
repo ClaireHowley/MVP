@@ -23,7 +23,7 @@ CREATE TABLE questions (
 
 DROP TABLE if exists multipleChoiceAnswers;
 CREATE TABLE multipleChoiceAnswers (
-    answer_id INT PRIMARY KEY NOT NULL,
+    answer_id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
     answer_text TEXT NOT NULL,
     is_correct BOOLEAN,
     question_id INT,
@@ -81,7 +81,7 @@ INSERT INTO multipleChoiceAnswers (answer_text, is_correct, question_id) VALUES
 ("αγαπώ", TRUE, 9),
 ("αγαπάμε", TRUE, 9),
 ("αγαπάτε", FALSE, 9),
-("Πηγαίνουμε", FALSE, 10),
+("πηγαίνουμε", FALSE, 10),
 ("πηγαίνεις", FALSE, 10),
 ("πηγαίνετε", TRUE, 10);
 
