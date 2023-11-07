@@ -31,10 +31,12 @@ router.get("/questions/:id", async function (req, red) {
 });
 
 //GET ONE answer //
-router.get("/answers/:id", async function (req, red) {
+router.get("/multipleChoiceAnswers/:id", async function (req, red) {
 	const answer_id = req.params.id;
 	try {
-		const results = await db(`SELECT * FROM answers WHERE answer_id = ${id};`);
+		const results = await db(
+			`SELECT * FROM multipleChoiceAnswers WHERE answer_id = ${id};`
+		);
 		res.send(results.data[0]);
 	} catch (err) {
 		res.status(500).send(err);
