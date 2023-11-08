@@ -1,14 +1,4 @@
---
--- Drop Tables
---
 
-
-
--- SET foreign_key_checks = 0;
--- SET foreign_key_checks = 1;
-
-
---
 -- Create Tables
 --
 
@@ -32,7 +22,9 @@ CREATE TABLE multipleChoiceAnswers (
 
 DROP TABLE if exists description;
 
-CREATE TABLE description (
+
+-- don't need table, can code in frontend as one piece of data
+CREATE TABLE description ( 
     description_id INT PRIMARY KEY,
     description_title VARCHAR(255),
     description_body TEXT,
