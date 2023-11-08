@@ -1,5 +1,13 @@
 import React from "react";
 
 export default function Homepage() {
-	return <div>Homepage</div>;
+	return (
+		<div>
+			<form>
+				<div>
+				<input>Name</input>
+			</form>
+			</div>
+		</div>
+	);
 }
