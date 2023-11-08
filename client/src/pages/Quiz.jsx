@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+// import Homepage from "./pages/Homepage";
 
 export default function Quiz() {
 	let [questions, setQuestions] = useState([]);

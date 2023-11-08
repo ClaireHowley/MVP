@@ -1,13 +1,15 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function Homepage() {
 	return (
 		<div>
-			<form>
-				<div>
-				<input>Name</input>
-			</form>
+			<div>
+				<button>
+					<Link to="/quiz">Start</Link>
+				</button>
 			</div>
+			<button>Review</button>
 		</div>
 	);
 }
