@@ -8,9 +8,9 @@ function App() {
 	return (
 		<>
 			<div>
-				<Link to="/">Homepage</Link>
-				<Link to="/review">Review</Link>
-				<Link to="/quiz">Quiz</Link>
+				<Link to="/"></Link>
+				<Link to="/review"></Link>
+				<Link to="/quiz"></Link>
 			</div>
 
 			<Routes>
