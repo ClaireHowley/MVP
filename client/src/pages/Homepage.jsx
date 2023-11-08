@@ -6,7 +6,10 @@ export default function Homepage() {
 	return (
 		<div>
 			<div>
-				<button type="button" class="btn btn-primary">
+				<button
+					type="button"
+					class="btn btn-primary"
+					className="startButtonHomepage">
 					<Link to="/quiz">Start</Link>
 				</button>
 			</div>
