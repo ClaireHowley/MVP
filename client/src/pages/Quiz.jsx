@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 
 function Quiz() {
 	let [questions, setQuestions] = useState([]);
+	let [questionIndex, setQuestionIndex] = useState([]);
 
 	useEffect(() => {
 		getQuestions();
@@ -16,12 +17,20 @@ function Quiz() {
 		setQuestions(data);
 	}
 
+	async function nextPrevQuestion() {
+		if (next === true) {
+			questions[i]++;
+		} else if ((prev && questions[i] > 0) === true) {
+			questions[i]--;
+		} else setQuestionIndex(questions[i]);
+	}
+
 	return (
 		<div>
 			<ol>
 				{questions.map((q) => (
 					<li key={q.question_id}>
-						{q.question}
+						<h4>{q.question}</h4>
 						<p>
 							{q.answers.map((a) => (
 								<button>{a.answer_text}</button>
