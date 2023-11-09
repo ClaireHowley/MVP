@@ -2,6 +2,17 @@ var express = require("express");
 var router = express.Router();
 const db = require("../model/helper");
 
+function shuffle(arr) {
+	for (let i = arr.length - 1; i >= 0; i--) {
+		const j = Math.floor(Math.random() * i);
+		const temp = arr[i];
+		arr[i] = arr[j];
+		arr[j] = temp;
+	}
+
+	return arr;
+}
+
 router.get("/", async function (req, res) {
 	try {
 		const results = await db(
@@ -29,7 +40,9 @@ router.get("/", async function (req, res) {
 			}
 		});
 
-		res.send(Object.values(result));
+		let resultArray = Object.values(result);
+		let randomResultArr = shuffle(resultArray);
+		res.send(randomResultArr);
 	} catch (err) {
 		res.status(500).send(err);
 	}
