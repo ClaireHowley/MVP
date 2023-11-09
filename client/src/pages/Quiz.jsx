@@ -5,7 +5,7 @@ import Button from "react-bootstrap/Button";
 function Quiz() {
 	let [questions, setQuestions] = useState([]);
 	let [currentQuestion, setCurrentQuestion] = useState(0);
-	let [correctAnswer, setCorrectAnswer] = useState(false, []);
+	let [correctAnswer, setCorrectAnswer] = useState(false);
 
 	useEffect(() => {
 		getQuestions();
@@ -30,10 +30,8 @@ function Quiz() {
 		}
 	}
 
-	function isCorrect(is_correct) {
-		if (is_correct === true) {
-			setCorrectAnswer(true);
-		}
+	function isCorrectClick() {
+		setCorrectAnswer(true);
 	}
 
 	return (
@@ -43,7 +41,12 @@ function Quiz() {
 					<h4>{questions[currentQuestion].question}</h4>
 					<p>
 						{questions[currentQuestion].answers.map((a) => (
-							<button onClick={a.is_correct ? "green" : null} key={a.answer_id}>
+							<button
+								key={a.answer_id}
+								onClick={() => isCorrectClick(a.is_correct)}
+								style={{
+									backgroundColor: correctAnswer ? "green" : null,
+								}}>
 								{a.answer_text}
 							</button>
 						))}
@@ -70,16 +73,3 @@ function Quiz() {
 }
 
 export default Quiz;
-
-{
-	/* {questions.map((q) => (
-					<li key={q.question_id}>
-						<h4>{q.question}</h4>
-						<p>
-							{q.answers.map((a) => (
-								<button>{a.answer_text}</button>
-							))}
-						</p>
-					</li>
-				))} */
-}
