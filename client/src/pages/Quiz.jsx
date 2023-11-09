@@ -4,7 +4,8 @@ import Button from "react-bootstrap/Button";
 
 function Quiz() {
 	let [questions, setQuestions] = useState([]);
-	let [questionIndex, setQuestionIndex] = useState([]);
+	let [currentQuestion, setCurrentQuestion] = useState(0);
+	let [correctAnswer, setCorrectAnswer] = useState(false, []);
 
 	useEffect(() => {
 		getQuestions();
@@ -17,28 +18,46 @@ function Quiz() {
 		setQuestions(data);
 	}
 
-	async function nextPrevQuestion() {
-		if (next === true) {
-			questions[i]++;
-		} else if ((prev && questions[i] > 0) === true) {
-			questions[i]--;
-		} else setQuestionIndex(questions[i]);
+	function nextQuestion() {
+		if (currentQuestion < questions.length - 1) {
+			setCurrentQuestion(currentQuestion + 1);
+		}
+	}
+
+	function prevQuestion() {
+		if (currentQuestion > 0) {
+			setCurrentQuestion(currentQuestion - 1);
+		}
+	}
+
+	function isCorrect(is_correct) {
+		if (is_correct === true) {
+			setCorrectAnswer(true);
+		}
 	}
 
 	return (
 		<div>
-			<ol>
-				{questions.map((q) => (
-					<li key={q.question_id}>
-						<h4>{q.question}</h4>
-						<p>
-							{q.answers.map((a) => (
-								<button>{a.answer_text}</button>
-							))}
-						</p>
-					</li>
-				))}
-			</ol>
+			{questions.length > 0 && questions[currentQuestion] && (
+				<div key={questions[currentQuestion].question_id}>
+					<h4>{questions[currentQuestion].question}</h4>
+					<p>
+						{questions[currentQuestion].answers.map((a) => (
+							<button onClick={a.is_correct ? "green" : null} key={a.answer_id}>
+								{a.answer_text}
+							</button>
+						))}
+					</p>
+				</div>
+			)}
+			<button onClick={prevQuestion} disabled={currentQuestion === 0}>
+				Previous
+			</button>
+			<button
+				onClick={nextQuestion}
+				disabled={currentQuestion === questions.length - 1}>
+				Next
+			</button>
 
 			<button type="button" className="btn btn-primary">
 				<Link to="/">Homepage</Link>
@@ -51,3 +70,16 @@ function Quiz() {
 }
 
 export default Quiz;
+
+{
+	/* {questions.map((q) => (
+					<li key={q.question_id}>
+						<h4>{q.question}</h4>
+						<p>
+							{q.answers.map((a) => (
+								<button>{a.answer_text}</button>
+							))}
+						</p>
+					</li>
+				))} */
+}

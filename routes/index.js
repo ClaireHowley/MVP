@@ -34,7 +34,11 @@ router.get("/", async function (req, res) {
 					question_id: item.question_id,
 					question: item.questions,
 					answers: [
-						{ answer_id: item.answer_id, answer_text: item.answer_text },
+						{
+							answer_id: item.answer_id,
+							answer_text: item.answer_text,
+							is_correct: item.is_correct,
+						},
 					],
 				};
 			}
