@@ -70,7 +70,7 @@ INSERT INTO multipleChoiceAnswers (answer_text, is_correct, question_id) VALUES
 ("διαβάζει", TRUE, 8),
 ("διαβάζεις", FALSE, 8),
 ("διαβάζουν", FALSE, 8),
-("αγαπώ", TRUE, 9),
+("αγαπώ", FALSE, 9),
 ("αγαπάμε", TRUE, 9),
 ("αγαπάτε", FALSE, 9),
 ("πηγαίνουμε", FALSE, 10),

@@ -27,6 +27,7 @@ router.get("/", async function (req, res) {
 				result[item.question_id].answers.push({
 					answer_id: item.answer_id,
 					answer_text: item.answer_text,
+					is_correct: item.is_correct,
 				});
 			} else {
 				// it doesnt exist yet

@@ -5,11 +5,17 @@ import Button from "react-bootstrap/Button";
 function Quiz() {
 	let [questions, setQuestions] = useState([]);
 	let [currentQuestion, setCurrentQuestion] = useState(0);
-	let [correctAnswer, setCorrectAnswer] = useState(false);
+	let [selectedAnswer, setSelectedAnswer] = useState();
+	let [message, setMessage] = useState("");
+	let [score, setScore] = useState(0);
 
 	useEffect(() => {
 		getQuestions();
 	}, []);
+
+	useEffect(() => {
+		checkAnswer(); // will run checkAnswer only after selectedAnswer is set
+	}, [selectedAnswer]);
 
 	async function getQuestions() {
 		const response = await fetch("/api");
@@ -21,17 +27,38 @@ function Quiz() {
 	function nextQuestion() {
 		if (currentQuestion < questions.length - 1) {
 			setCurrentQuestion(currentQuestion + 1);
+			setSelectedAnswer(false);
+			setMessage(null);
 		}
 	}
 
 	function prevQuestion() {
 		if (currentQuestion > 0) {
 			setCurrentQuestion(currentQuestion - 1);
+			setSelectedAnswer(false);
 		}
 	}
 
-	function isCorrectClick() {
-		setCorrectAnswer(true);
+	function isCorrectClick(answer) {
+		setSelectedAnswer(answer.answer_id);
+		console.log("Selected Answer:", selectedAnswer);
+	}
+
+	function checkAnswer() {
+		questions.forEach((question) => {
+			const selectedAnswerObject = question.answers.find(
+				(a) => a.answer_id === selectedAnswer
+			);
+
+			if (selectedAnswerObject && selectedAnswerObject.is_correct) {
+				setMessage("Well done!");
+				setScore((prevScore) => prevScore + 1);
+			}
+
+			if (selectedAnswerObject && !selectedAnswerObject.is_correct) {
+				setMessage("Explanation!...");
+			}
+		});
 	}
 
 	return (
@@ -43,14 +70,22 @@ function Quiz() {
 						{questions[currentQuestion].answers.map((a) => (
 							<button
 								key={a.answer_id}
-								onClick={() => isCorrectClick(a.is_correct)}
+								onClick={() => isCorrectClick(a)}
 								style={{
-									backgroundColor: correctAnswer ? "green" : null,
-								}}>
+									backgroundColor:
+										a.answer_id === selectedAnswer
+											? a.is_correct
+												? "green"
+												: "red"
+											: null,
+								}}
+								disabled={selectedAnswer}>
 								{a.answer_text}
 							</button>
 						))}
 					</p>
+					<p>{message}</p>
+					<p>Score: {score}</p>
 				</div>
 			)}
 			<button onClick={prevQuestion} disabled={currentQuestion === 0}>

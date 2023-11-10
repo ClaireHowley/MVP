@@ -8,16 +8,17 @@ function App() {
 	return (
 		<>
 			<div>
+				<header>Quick Greek</header>
 				<Link to="/"></Link>
 				<Link to="/review"></Link>
 				<Link to="/quiz"></Link>
-			</div>
 
-			<Routes>
-				<Route path="/" element={<Homepage />} />
-				<Route path="/review" element={<ReviewPage />} />
-				<Route path="/quiz" element={<Quiz />} />
-			</Routes>
+				<Routes>
+					<Route path="/" element={<Homepage />} />
+					<Route path="/review" element={<ReviewPage />} />
+					<Route path="/quiz" element={<Quiz />} />
+				</Routes>
+			</div>
 		</>
 	);
 }
