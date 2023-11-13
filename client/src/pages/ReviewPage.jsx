@@ -5,12 +5,13 @@ import Button from "react-bootstrap/Button";
 export default function ReviewPage() {
 	return (
 		<div>
-			<h2>Review</h2>
 			<h3>Present Tense - Ενεστώτας</h3>
+			<p>Group A: verbs ending in -ω</p>
+			<p>Group B: verbs ending in -ώ</p>
 			<table border="5" className="table">
 				<thead>
 					<tr>
-						<th></th>
+						<th>Pronouns</th>
 						<th>Group A</th>
 						<th>Group B1</th>
 						<th>Group B2</th>
