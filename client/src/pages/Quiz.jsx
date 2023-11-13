@@ -59,10 +59,28 @@ function Quiz() {
 				setMessage("Explanation!...");
 			}
 		});
+
+		function displayScore() {
+			if (questions.length - 1 && score >= 6) {
+				setMessage(`Your score is ${score}/10, well done!`);
+			}
+			if (questions.length - 1 && score <= 6) {
+				setMessage(`Your score is ${score}/10, keep working hard!`);
+			}
+		}
 	}
 
 	return (
 		<div>
+			<header>
+				<button type="button" className="homepageButtonQuiz">
+					<Link to="/">Homepage</Link>
+				</button>
+
+				<button type="button" className="reviewButtonQuiz">
+					<Link to="/review">Review</Link>
+				</button>
+			</header>
 			{questions.length > 0 && questions[currentQuestion] && (
 				<div key={questions[currentQuestion].question_id}>
 					<h4>{questions[currentQuestion].question}</h4>
@@ -95,13 +113,6 @@ function Quiz() {
 				onClick={nextQuestion}
 				disabled={currentQuestion === questions.length - 1}>
 				Next
-			</button>
-
-			<button type="button" className="btn btn-primary">
-				<Link to="/">Homepage</Link>
-			</button>
-			<button type="button" className="btn btn-primary">
-				<Link to="/review">Review</Link>
 			</button>
 		</div>
 	);
