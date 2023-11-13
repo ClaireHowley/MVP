@@ -8,6 +8,9 @@ function App() {
 	return (
 		<>
 			<div>
+				<div className="banner">
+					<img src="./banner.jpg" alt="Banner Image"></img>
+				</div>
 				<header>Quick Greek</header>
 				<Link to="/"></Link>
 				<Link to="/review"></Link>

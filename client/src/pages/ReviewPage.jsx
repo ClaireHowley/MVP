@@ -5,8 +5,8 @@ import Button from "react-bootstrap/Button";
 export default function ReviewPage() {
 	return (
 		<div>
-			<h1>Review</h1>
-			<h2>Present Tense - Ενεστώτας</h2>
+			<h2>Review</h2>
+			<h3>Present Tense - Ενεστώτας</h3>
 			<table border="5" className="table">
 				<thead>
 					<tr>
@@ -56,11 +56,11 @@ export default function ReviewPage() {
 				</tbody>
 			</table>
 			<footer>
-				<button type="button" className="btn btn-primary">
+				<button type="button" className="homepageButtonReview">
 					<Link to="/">Homepage</Link>
 				</button>
 
-				<button type="button" className="btn btn-primary">
+				<button type="button" className="quizButtonReview">
 					<Link to="/quiz">Quiz</Link>
 				</button>
 			</footer>
