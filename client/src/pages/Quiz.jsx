@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 
 function Quiz() {
 	let [questions, setQuestions] = useState([]);
 	let [currentQuestion, setCurrentQuestion] = useState(0);
-	let [selectedAnswer, setSelectedAnswer] = useState();
-	let [message, setMessage] = useState("");
-	let [score, setScore] = useState(0);
+	let [quizEnded, setQuizEnded] = useState(false);
 
 	useEffect(() => {
 		getQuestions();
 	}, []);
 
 	useEffect(() => {
-		checkAnswer(); // will run checkAnswer only after selectedAnswer is set
-	}, [selectedAnswer]);
+		if (currentQuestion === questions.length - 1) {
+			setQuizEnded(true);
+		}
+	}, [currentQuestion, questions]);
 
 	async function getQuestions() {
 		const response = await fetch("/api");
@@ -27,85 +26,89 @@ function Quiz() {
 	function nextQuestion() {
 		if (currentQuestion < questions.length - 1) {
 			setCurrentQuestion(currentQuestion + 1);
-			setSelectedAnswer(false);
-			setMessage(null);
+			setSelectedAnswer(null);
 		}
 	}
 
 	function prevQuestion() {
 		if (currentQuestion > 0) {
 			setCurrentQuestion(currentQuestion - 1);
-			setSelectedAnswer(false);
+			setQuizEnded(null);
 		}
 	}
 
-	function isCorrectClick(answer) {
-		setSelectedAnswer(answer.answer_id);
-		console.log("Selected Answer:", selectedAnswer);
+	function isCorrectClick(answer, question_id) {
+		setQuestions((questions) =>
+			questions.map((q) => {
+				// if the current question is the one we were answering,
+				if (q.question_id === question_id) {
+					// store the answer_id as the selected answer for that question,
+					return { ...q, selectedAnswer: answer.answer_id };
+				} else {
+					return q;
+				}
+				// otherwise, leave the question as it was
+			})
+		);
 	}
 
-	function checkAnswer() {
-		questions.forEach((question) => {
-			const selectedAnswerObject = question.answers.find(
-				(a) => a.answer_id === selectedAnswer
-			);
+	function getScore() {
+		let score = 0;
 
-			if (selectedAnswerObject && selectedAnswerObject.is_correct) {
-				setMessage("Well done!");
-				setScore((prevScore) => prevScore + 1);
-			}
-
-			if (selectedAnswerObject && !selectedAnswerObject.is_correct) {
-				setMessage("Explanation!...");
-			}
-		});
-
-		function displayScore() {
-			if (questions.length - 1 && score >= 6) {
-				setMessage(`Your score is ${score}/10, well done!`);
-			}
-			if (questions.length - 1 && score <= 6) {
-				setMessage(`Your score is ${score}/10, keep working hard!`);
-			}
+		for (const q of questions) {
+			const correct = q.answers.find((a) => a.is_correct);
+			if (correct.answer_id === q.selectedAnswer) score++;
 		}
+
+		return score;
 	}
+
+	const score = getScore();
 
 	return (
 		<div>
 			<header>
-				<button type="button" className="homepageButtonQuiz">
+				<button type="button" id="homepageButtonQuizPage">
 					<Link to="/">Homepage</Link>
 				</button>
 
-				<button type="button" className="reviewButtonQuiz">
+				<button type="button" id="reviewButtonQuizPage">
 					<Link to="/review">Review</Link>
 				</button>
 			</header>
-			{questions.length > 0 && questions[currentQuestion] && (
+			{questions.length > 0 && questions[currentQuestion] ? (
 				<div key={questions[currentQuestion].question_id}>
 					<h4>{questions[currentQuestion].question}</h4>
 					<p>
 						{questions[currentQuestion].answers.map((a) => (
 							<button
 								key={a.answer_id}
-								onClick={() => isCorrectClick(a)}
+								onClick={() =>
+									isCorrectClick(a, questions[currentQuestion].question_id)
+								}
 								style={{
 									backgroundColor:
-										a.answer_id === selectedAnswer
+										a.answer_id === questions[currentQuestion].selectedAnswer
 											? a.is_correct
 												? "green"
 												: "red"
 											: null,
-								}}
-								disabled={selectedAnswer}>
+								}}>
 								{a.answer_text}
 							</button>
 						))}
 					</p>
-					<p>{message}</p>
 					<p>Score: {score}</p>
 				</div>
-			)}
+			) : null}
+
+			{quizEnded &&
+				(score > 6 ? (
+					<p>Your score is {score}/10, well done!</p>
+				) : (
+					<p>Your score is {score}/10, keep working hard!</p>
+				))}
+
 			<button onClick={prevQuestion} disabled={currentQuestion === 0}>
 				Previous
 			</button>

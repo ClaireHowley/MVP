@@ -56,11 +56,11 @@ export default function ReviewPage() {
 				</tbody>
 			</table>
 			<footer>
-				<button type="button" className="homepageButtonReview">
+				<button type="button" className="homepageButtonReviewPage">
 					<Link to="/">Homepage</Link>
 				</button>
 
-				<button type="button" className="quizButtonReview">
+				<button type="button" className="quizButtonReviewPage">
 					<Link to="/quiz">Quiz</Link>
 				</button>
 			</footer>

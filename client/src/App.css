@@ -4,39 +4,33 @@
 	text-align: center;
 }
 
-.buttonHomepage {
-	border-radius: 50%;
-	transition-duration: 0.4s;
-	color: blue;
-}
-
-.buttonHomepage:hover {
-	color: white;
-}
+/* position: relative;
+	left: 90%; */
+/* display: block; */
 
 #root {
-	/* max-width: 1280px; */
+	max-width: 1000px;
 	margin: 0 auto;
 	padding: 1rem;
 	text-align: center;
 }
 
-.homepageButtonQuiz {
+#homepageButtonQuizPage {
+	position: relative;
+	right: 80%;
+}
+
+#reviewButtonQuizPage {
+	position: relative;
+	left: 80%;
+}
+
+.homepageButtonReviewPage {
 	position: relative;
 	right: 60%;
 }
 
-.reviewButtonQuiz {
-	position: relative;
-	left: 60%;
-}
-
-.homepageButtonReview {
-	position: relative;
-	right: 60%;
-}
-
-.quizButtonReview {
+.quizButtonReviewPage {
 	position: relative;
 	left: 60%;
 }
