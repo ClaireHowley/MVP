@@ -82,6 +82,8 @@ This is the content of the multiple choice answers table, populated again via th
 NOTE - The classes of the buttons always read in this order: page they are found on, the page it brings you to/type of button. For example: "quizAnswerButtons" means the Answer Button on the quiz page.
 exampe: "homepageReviewButton" means the Review button on the homepage.
 
+-All CSS is found on index.css
+
 # FUTURE
 
 -User login

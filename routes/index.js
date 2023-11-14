@@ -23,7 +23,7 @@ router.get("/", async function (req, res) {
 		results.data.forEach((item) => {
 			console.log(item);
 			if (result[item.question_id]) {
-				// it already exists
+				// it already exists in the object
 				result[item.question_id].answers.push({
 					answer_id: item.answer_id,
 					answer_text: item.answer_text,

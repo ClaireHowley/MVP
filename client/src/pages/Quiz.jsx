@@ -62,17 +62,7 @@ function Quiz() {
 	const score = getScore();
 
 	return (
-		<div>
-			<div className="quizHomepageReviewButtons">
-				<button type="button" id="quizHomePageButton">
-					<Link to="/">Homepage</Link>
-				</button>
-
-				<button type="button" id="quizReviewButton">
-					<Link to="/review">Review</Link>
-				</button>
-			</div>
-
+		<div id="QuizPage">
 			<div className="quizAnswerButtons">
 				{questions.length > 0 && questions[currentQuestion] ? (
 					<div key={questions[currentQuestion].question_id}>
@@ -119,6 +109,15 @@ function Quiz() {
 					onClick={nextQuestion}
 					disabled={currentQuestion === questions.length - 1}>
 					Next
+				</button>
+			</div>
+			<div className="quizHomepageReviewButtons">
+				<button type="button" id="quizHomePageButton">
+					<Link to="/">Homepage</Link>
+				</button>
+
+				<button type="button" id="quizReviewButton">
+					<Link to="/review">Review</Link>
 				</button>
 			</div>
 		</div>

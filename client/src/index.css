@@ -1,3 +1,5 @@
+/* App */
+
 * {
 	margin: auto;
 	max-width: 1000px;
@@ -9,45 +11,87 @@
 
 #header {
 	text-align: left;
+	padding-top: 5%;
+	padding-left: 5%;
 	font-size: xx-large;
+	background-color: #001489; /* Replace with your desired blue color */
+	color: #ffffff; /* Set text color to contrast with the background */
 }
 
-.homepage {
+/* Homepage */
+
+#homepage {
+	height: 500px;
 	display: grid;
+	grid-template-columns: 1fr 1fr;
+	padding-left: 200px;
+	padding-right: 200px;
+	place-items: center;
+	/* height: 100vh; Set a specific height (viewport height) */
+	background-image: url(../public/BackgroundImage.jpg);
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
 }
 
-/* :root {
-	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-	line-height: 2;
-	font-weight: 550; */
+#homepageQuizButton {
+	scale: 150%;
+}
 
-/* color-scheme: light dark; */
-/* color: rgba(255, 255, 255, 0.87); */
-/* background-color: #242424;
+#homepageReviewButton {
+	scale: 150%;
+}
 
-	font-synthesis: none;
-	text-rendering: optimizeLegibility;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale;
-	-webkit-text-size-adjust: 100%; */
+/* Quiz */
 
 .quizAnswerButtons {
-	padding: 5%;
+	padding: 10%;
 	width: 450px;
 	border: 1px solid grey;
 	border-radius: 40px;
 	box-shadow: 1px 3px 3px 3px rgb(194, 194, 194);
-	/* background-color: #eeeeee; */
+	/* color: grey; */
 }
 
 .quizHomepageReviewButtons {
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 100px;
-	padding-top: 20px;
-	padding-bottom: 20px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
+/* ReviewPage */
+
+.ReviewPage {
+	padding-top: 5%;
+}
+
+.groupAgroupB {
+	padding-top: 5%;
+	padding-right: 25%;
+}
+
+.reviewHomepageButton {
+	position: absolute;
+	right: 70%;
+}
+
+.reviewQuizButton {
+	position: absolute;
+	left: 70%;
+}
+
+.table {
+	padding-bottom: 5%;
+}
+
+.tableHeading {
+	color: #001489;
+}
+
+/* Buttons */
+/* a = anchor elements*/
 a {
 	font-weight: 500;
 	color: #001489;
@@ -57,30 +101,6 @@ a:hover {
 	color: #001489;
 }
 
-.homepageButtonReviewPage {
-	position: absolute;
-	right: 80%;
-}
-
-.quizButtonReviewPage {
-	position: absolute;
-	left: 60%;
-}
-
-body {
-	/* display: flex; */
-	place-items: center;
-	/* min-width: 320px; */
-	/* min-height: 100vh; */
-	padding: 10%;
-	/* position: relative; */
-}
-
-/* h1 {
-	font-size: 3.2em;
-	line-height: 1.1;
-} */
-
 button {
 	border-radius: 8px;
 	border: 1px solid transparent;
@@ -88,23 +108,11 @@ button {
 	font-size: 1em;
 	font-weight: 500;
 	font-family: inherit;
-
 	cursor: pointer;
 	transition: border-color 0.25s;
 }
 
 button:hover {
 	border-color: #001489;
+	border-width: 1.5px;
 }
-button:focus,
-button:focus-visible {
-	outline: 4px auto -webkit-focus-ring-color;
-}
-
-/* #homepageButtonQuizPage:hover {
-	background-color: lightblue;
-}
-
-#reviewButtonQuizPage:hover {
-	background-color: lightblue;
-} */
