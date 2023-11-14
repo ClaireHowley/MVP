@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 export default function ReviewPage() {
 	return (
 		<div className="ReviewPage">
-			<h3>Present Tense - Ενεστώτας</h3>
+			<h2>Present Tense - Ενεστώτας</h2>
 			<div className="groupAgroupB">
 				<p>Group A: verbs ending in -ω</p>
 				<p>Group B: verbs ending in -ώ</p>

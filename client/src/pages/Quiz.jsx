@@ -63,11 +63,11 @@ function Quiz() {
 
 	return (
 		<div id="QuizPage">
-			<div className="quizAnswerButtons">
+			<div className="quizQuestionAnswerBox">
 				{questions.length > 0 && questions[currentQuestion] ? (
 					<div key={questions[currentQuestion].question_id}>
 						<h4>{questions[currentQuestion].question}</h4>
-						<p>
+						<div>
 							{questions[currentQuestion].answers.map((a) => (
 								<button
 									key={a.answer_id}
@@ -90,8 +90,8 @@ function Quiz() {
 									{a.answer_text}
 								</button>
 							))}
-						</p>
-						<p>Score: {score}</p>
+						</div>
+						<div className="score">Score: {score}</div>
 					</div>
 				) : null}
 
@@ -101,15 +101,16 @@ function Quiz() {
 					) : (
 						<p>Your score is {score}/10, keep working hard!</p>
 					))}
-
-				<button onClick={prevQuestion} disabled={currentQuestion === 0}>
-					Previous
-				</button>
-				<button
-					onClick={nextQuestion}
-					disabled={currentQuestion === questions.length - 1}>
-					Next
-				</button>
+				<div className="quizPrevNextButton">
+					<button onClick={prevQuestion} disabled={currentQuestion === 0}>
+						Previous
+					</button>
+					<button
+						onClick={nextQuestion}
+						disabled={currentQuestion === questions.length - 1}>
+						Next
+					</button>
+				</div>
 			</div>
 			<div className="quizHomepageReviewButtons">
 				<button type="button" id="quizHomePageButton">
