@@ -1,69 +1,106 @@
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+* {
+	margin: auto;
+	max-width: 1000px;
+	text-align: center;
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 2;
+	font-weight: 550;
+}
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+#header {
+	text-align: left;
+	font-size: xx-large;
+}
 
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
+/* :root {
+	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+	line-height: 2;
+	font-weight: 550; */
+
+/* color-scheme: light dark; */
+/* color: rgba(255, 255, 255, 0.87); */
+/* background-color: #242424;
+
+	font-synthesis: none;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
+	-moz-osx-font-smoothing: grayscale;
+	-webkit-text-size-adjust: 100%; */
+
+.quizAnswerButtons {
+	padding: 5%;
+	width: 450px;
+	border: 1px solid grey;
+	border-radius: 40px;
+	box-shadow: 1px 3px 3px 3px rgb(194, 194, 194);
+	/* background-color: #eeeeee; */
+}
+
+.quizHomepageReviewButtons {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 100px;
+	padding-top: 20px;
+	padding-bottom: 20px;
 }
 
 a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
+	font-weight: 500;
+	color: #001489;
+	text-decoration: inherit;
 }
 a:hover {
-  color: #535bf2;
+	color: #001489;
+}
+
+.homepageButtonReviewPage {
+	position: absolute;
+	right: 80%;
+}
+
+.quizButtonReviewPage {
+	position: absolute;
+	left: 60%;
 }
 
 body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+	/* display: flex; */
+	place-items: center;
+	/* min-width: 320px; */
+	/* min-height: 100vh; */
+	padding: 10%;
+	/* position: relative; */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
+/* h1 {
+	font-size: 3.2em;
+	line-height: 1.1;
+} */
 
 button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
+	border-radius: 8px;
+	border: 1px solid transparent;
+	padding: 0.6em 1.2em;
+	font-size: 1em;
+	font-weight: 500;
+	font-family: inherit;
+
+	cursor: pointer;
+	transition: border-color 0.25s;
 }
+
 button:hover {
-  border-color: #646cff;
+	border-color: #001489;
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+	outline: 4px auto -webkit-focus-ring-color;
 }
 
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+/* #homepageButtonQuizPage:hover {
+	background-color: lightblue;
 }
+
+#reviewButtonQuizPage:hover {
+	background-color: lightblue;
+} */

@@ -3,15 +3,13 @@ import { Link } from "react-router-dom";
 
 export default function Homepage() {
 	return (
-		<div>
+		<div className="homepage">
 			<div>
-				<div className="container lg"></div>
-
-				<button type="button" className="buttonHomepage">
+				<button type="button" className="homepageQuizButton">
 					<Link to="/quiz">Start</Link>
 				</button>
 			</div>
-			<button type="button" className="buttonHomepage">
+			<button type="button" className="homepageReviewButton">
 				<Link to="/review">Review</Link>
 			</button>
 		</div>

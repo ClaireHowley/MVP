@@ -1,6 +1,5 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Button from "react-bootstrap/Button";
 
 export default function ReviewPage() {
 	return (
@@ -57,11 +56,11 @@ export default function ReviewPage() {
 				</tbody>
 			</table>
 			<footer>
-				<button type="button" className="homepageButtonReviewPage">
+				<button type="button" className="reviewHomepageButton">
 					<Link to="/">Homepage</Link>
 				</button>
 
-				<button type="button" className="quizButtonReviewPage">
+				<button type="button" className="reviewQuizButton">
 					<Link to="/quiz">Quiz</Link>
 				</button>
 			</footer>

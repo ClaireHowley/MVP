@@ -2,25 +2,24 @@ import { Link, Route, Routes } from "react-router-dom";
 import Homepage from "./pages/Homepage";
 import ReviewPage from "./pages/ReviewPage";
 import Quiz from "./pages/Quiz";
-import "./App.css";
 
 function App() {
 	return (
 		<>
 			<div>
-				{/* <div className="banner">
-					<img src="./banner.jpg" alt="Banner Image"></img>
-				</div> */}
-				<header>Quick Greek</header>
-				<Link to="/"></Link>
-				<Link to="/review"></Link>
-				<Link to="/quiz"></Link>
-
-				<Routes>
-					<Route path="/" element={<Homepage />} />
-					<Route path="/review" element={<ReviewPage />} />
-					<Route path="/quiz" element={<Quiz />} />
-				</Routes>
+				<div>
+					<header id="header">Quick Greek</header>
+					<Link to="/"></Link>
+					<Link to="/review"></Link>
+					<Link to="/quiz"></Link>
+				</div>
+				<div className="app">
+					<Routes>
+						<Route path="/" element={<Homepage />} />
+						<Route path="/review" element={<ReviewPage />} />
+						<Route path="/quiz" element={<Quiz />} />
+					</Routes>
+				</div>
 			</div>
 		</>
 	);
