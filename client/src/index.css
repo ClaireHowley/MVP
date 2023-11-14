@@ -12,6 +12,10 @@
 	font-size: xx-large;
 }
 
+.homepage {
+	display: grid;
+}
+
 /* :root {
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 2;
