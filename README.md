@@ -71,7 +71,7 @@ This is the content of the multiple choice answers table, populated again via th
 
 # FRONTEND
 
--The frontend consists of the app, homepage, reviewpage and quiz .jsx
+-The app consists of the app, homepage, reviewpage and quiz .jsx
 -The homepage consists of two buttons where you can start the quiz or do a reivew session first.
 -The review page is static and conveys information on the present simple congugation.
 -The quiz page consists of a question with 3 potential answers. Once you choose one, you cannot choose again. If correct, it will turn green and you gain a point. If incorrect, it turns red.
@@ -84,7 +84,7 @@ exampe: "homepageReviewButton" means the Review button on the homepage.
 
 -All CSS is found on index.css
 
-# FUTURE
+# FUTURE PLANS
 
 -User login
 -More topics / questions
