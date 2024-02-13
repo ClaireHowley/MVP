@@ -20,7 +20,8 @@ CREATE TABLE multipleChoiceAnswers (
     FOREIGN KEY (question_id) REFERENCES questions(question_id)
 );
 
-DROP TABLE if exists description;
+DROP TABLE if exists `description`;
+ DROP TABLE IF EXISTS `users`; 
 
 
 -- don't need table, can code in frontend as one piece of data
@@ -79,15 +80,11 @@ INSERT INTO multipleChoiceAnswers (answer_text, is_correct, question_id) VALUES
 
 
 
--- Πίνουμε, πίνει*, πίνω
--- Αγοράζω, αγοράζει, αγοράζουμε*
--- Παίζεις*, παίζει, παίζετε
--- Δουλεύει, δουλεύεις, δουλεύουν*
--- Καταλαβαίνω, καταλαβαίνει*, καταλάβετε 
--- Μαθαίνουν, μαθαίνω, μαθαίνει*
--- Βλέπουν*, βλέπουμε, βλέπετε
--- Διαβάζει*, διαβάζεις, διαβάζουν
--- Αγαπώ, αγαπάμε*, αγαπάτε (λολ)
--- Πηγαίνουμε, πηγαίνεις, πηγαίνετε*
+
+CREATE TABLE users(
+    userid INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    username VARCHAR(255) NOT NULL, 
+    password VARCHAR(255) NOT NULL
+);
 
 SET foreign_key_checks = 1;
