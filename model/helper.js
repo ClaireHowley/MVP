@@ -1,6 +1,9 @@
+// node.js module for interacting with msql database
+
 require("dotenv").config();
 const mysql = require("mysql");
 
+// exports a function that takes sql query and returns a promise
 module.exports = async function db(query) {
 	const results = {
 		data: [],
