@@ -11,3 +11,6 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 		</BrowserRouter>
 	</React.StrictMode>
 );
+
+// browser router keeps ui insync with current url
+// strict mode - hightlights problems with your code
