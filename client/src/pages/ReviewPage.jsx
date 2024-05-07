@@ -85,8 +85,7 @@ export default function ReviewPage() {
 				</button>
 			</div>
 			<button type="button">
-				Submit
-				<Link to="/submit"></Link>
+				<Link to="/submit">Submit</Link>
 			</button>
 		</div>
 	);
