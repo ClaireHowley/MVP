@@ -22,7 +22,7 @@ export default function SubmitQuestion() {
 
 		if (name === "question") {
 			setQuestionData({ ...questionData, question: value });
-		} else if (name === "answer") {
+		} else if (name === "answers") {
 			const updatedAnswers = questionData.answers.map((answer) => {
 				return { ...answer, text: value, isCorrect: checked };
 			});
@@ -30,10 +30,46 @@ export default function SubmitQuestion() {
 		}
 	};
 
+	const handleSubmit = (e) => {
+		e.preventDefault(); //prevents the default form submission behavior (page reload)
+		console.log("submitted!");
+		setQuestionData({
+			question: "",
+			answers: [
+				{ text: "", isCorrect: false },
+				{ text: "", isCorrect: false },
+				{ text: "", isCorrect: false },
+			],
+		});
+
+		// fetch content here
+	};
+
 	return (
 		<div>
 			<h1>Add a question</h1>
-			<form className="questionBox"></form>
+			<form className="questionAndAnswerSubmitBox" onSubmit={handleSubmit}>
+				<label>
+					Question:
+					<input type="text" name="question" onChange={handleChange} />
+				</label>
+				<label>
+					Answers:
+					<div>
+						<input type="text" name="answers" onChange={handleChange} />
+						<input type="checkbox" name="answers" />
+					</div>
+					<div>
+						<input type="text" name="answers" onChange={handleChange} />
+						<input type="checkbox" name="answers" />
+					</div>
+					<div>
+						<input type="text" name="answers" onChange={handleChange} />
+						<input type="checkbox" name="answers" />
+					</div>
+				</label>
+				<input type="submit" value="Submit" />
+			</form>
 			<button type="button" className="reviewHomepageButton">
 				<Link to="/">Homepage</Link>
 			</button>
