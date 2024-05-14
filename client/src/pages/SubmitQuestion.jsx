@@ -43,7 +43,7 @@ export default function SubmitQuestion() {
 		// fetch content here
 
 		try {
-			const response = await fetch("", {
+			const response = await fetch("api/addquestion", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json",
@@ -54,7 +54,7 @@ export default function SubmitQuestion() {
 			console.log("here:", data);
 
 			setQuestionData({
-				// reset after successsful passing of data
+				// reset after successsful passing of data -- doesn't work
 				question: "",
 				answers: [
 					{ text: "", isCorrect: false },
