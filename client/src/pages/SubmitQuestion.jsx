@@ -21,10 +21,16 @@ export default function SubmitQuestion() {
 		// const checked = e.target.checked;
 
 		if (name === "question") {
-			setQuestionData({ ...questionData, question: value });
-		} else if (name === "answers") {
-			const updatedAnswers = questionData.answers.map((answer) => {
-				return { ...answer, text: value, isCorrect: checked };
+			setQuestionData({ ...questionData, question: value }); // we update all of the ...questionData object
+		} else if (name === "answer") {
+			const updatedAnswers = [...questionData.answers]; // cretaing a shallow copy of the questionData.answers array
+			updatedAnswers[index].text = value; // updatedAnswers[index] retrieves the answer object at the given index, and .text = value updates its text property with the new value that is entered
+			setQuestionData({ ...questionData, answers: updatedAnswers });
+		} else if (name === "checkbox") {
+			const updatedAnswers = questionData.answers.map((answer, i) => {
+				return index === i
+					? { ...answer, isCorrect: checked }
+					: { ...answer, isCorrect: false };
 			});
 			setQuestionData({ ...questionData, answers: updatedAnswers });
 		}
@@ -51,22 +57,32 @@ export default function SubmitQuestion() {
 			<form className="questionAndAnswerSubmitBox" onSubmit={handleSubmit}>
 				<label>
 					Question:
-					<input type="text" name="question" onChange={handleChange} />
+					<input
+						type="text"
+						name="question"
+						value={questionData.question}
+						onChange={handleChange}
+					/>
 				</label>
+				<div></div>
 				<label>
 					Answers:
-					<div>
-						<input type="text" name="answers" onChange={handleChange} />
-						<input type="checkbox" name="answers" />
-					</div>
-					<div>
-						<input type="text" name="answers" onChange={handleChange} />
-						<input type="checkbox" name="answers" />
-					</div>
-					<div>
-						<input type="text" name="answers" onChange={handleChange} />
-						<input type="checkbox" name="answers" />
-					</div>
+					{questionData.answers.map((answer, index) => (
+						<div key={index}>
+							<input
+								type="text"
+								name="answer"
+								value={answer.text}
+								onChange={(e) => handleChange(e, index)}
+							/>
+							<input
+								type="checkbox"
+								name="checkbox"
+								checked={answer.isCorrect}
+								onChange={(e) => handleChange(e, index)} // wrapped as a function so you can pass the index (arrow fn to stop the fn being called immediately when the page renders). "e" is the event object
+							/>
+						</div>
+					))}
 				</label>
 				<input type="submit" value="Submit" />
 			</form>
