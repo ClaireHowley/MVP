@@ -3,8 +3,6 @@ var router = express.Router(); // creates router object with express
 const db = require("../model/helper"); // import db functions
 
 // fisher yates shuffle algorithm
-// for loop from last element to first
-//
 function shuffle(arr) {
 	for (let i = arr.length - 1; i >= 0; i--) {
 		const j = Math.floor(Math.random() * i); // generates a number between 0 and 1 that isn't 1, therefore mulity by the i to get a number (math.floor rounds down to nearest whole number)
@@ -62,7 +60,14 @@ router.get("/", async function (req, res) {
 // add route to push new questions into the db
 router.post("/addquestion", async function (req, res) {
 	try {
-	} catch {}
+		const { question, answers } = req.body; // getting the question and answers from the req.body
+
+		const questionAdded = await db(
+			`INSERT INTO questions (questions) VALUES ("${question}")`
+		);
+	} catch (err) {
+		res.status(400).send({ message: err.message });
+	}
 });
 
 module.exports = router;
