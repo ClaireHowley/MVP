@@ -10,6 +10,8 @@ function Quiz() {
 		getQuestions();
 	}, []);
 
+	// issue is why useEffect is only loading on first loadS
+
 	async function getQuestions() {
 		const response = await fetch("/api");
 

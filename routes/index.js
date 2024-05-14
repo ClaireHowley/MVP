@@ -20,11 +20,12 @@ router.get("/", async function (req, res) {
 			// db helper function, imported at the top
 			`SELECT * FROM questions JOIN multipleChoiceAnswers ON multipleChoiceAnswers.question_id = questions.question_id;`
 		);
+		console.log("getting qs");
 		const result = {}; // used to store the grouped data
 		// group things... by question_id
 		results.data.forEach((item) => {
 			// data (array )is a property in the results object
-			console.log(item);
+			// console.log(item);
 			if (result[item.question_id]) {
 				// checks if the result object already has an entry for the current item's question id
 				// it already exists in the object
