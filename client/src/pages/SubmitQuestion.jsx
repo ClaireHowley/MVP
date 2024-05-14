@@ -24,31 +24,47 @@ export default function SubmitQuestion() {
 			setQuestionData({ ...questionData, question: value }); // we update all of the ...questionData object
 		} else if (name === "answer") {
 			const updatedAnswers = [...questionData.answers]; // cretaing a shallow copy of the questionData.answers array
-			updatedAnswers[index].text = value; // updatedAnswers[index] retrieves the answer object at the given index, and .text = value updates its text property with the new value that is entered
+			updatedAnswers[index].text = value; // updatedAnswers[index] retrieves ONE answer object at the GIVEN INDEX, and .text = value updates ONE text property with the new value that is entered
 			setQuestionData({ ...questionData, answers: updatedAnswers });
 		} else if (name === "checkbox") {
 			const updatedAnswers = questionData.answers.map((answer, i) => {
 				return index === i
 					? { ...answer, isCorrect: checked }
-					: { ...answer, isCorrect: false };
+					: { ...answer, isCorrect: false }; // ensures only one checkbox at a time can be ticked
 			});
 			setQuestionData({ ...questionData, answers: updatedAnswers });
 		}
 	};
 
-	const handleSubmit = (e) => {
+	const handleSubmit = async (e) => {
 		e.preventDefault(); //prevents the default form submission behavior (page reload)
 		console.log("submitted!");
-		setQuestionData({
-			question: "",
-			answers: [
-				{ text: "", isCorrect: false },
-				{ text: "", isCorrect: false },
-				{ text: "", isCorrect: false },
-			],
-		});
 
 		// fetch content here
+
+		try {
+			const response = await fetch("", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify(questionData),
+			});
+			const data = await response.json();
+			console.log("here:", data);
+
+			setQuestionData({
+				// reset after successsful passing of data
+				question: "",
+				answers: [
+					{ text: "", isCorrect: false },
+					{ text: "", isCorrect: false },
+					{ text: "", isCorrect: false },
+				],
+			});
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	return (
