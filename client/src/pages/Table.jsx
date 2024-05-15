@@ -16,7 +16,7 @@ export default function Table({ headings, rows }) {
 					</tr>
 				</thead>
 				<tbody>
-					{/*this structure allows to iterate over the outer array to render each row, and within each row, iterate over the inner array to render each cell data*/}
+					{/*"D array --> this structure allows us to iterate over the outer array to display/render each row, and within each row, iterate over the inner array to render each cell data*/}
 					{rows.map((row, rowIndex) => (
 						<tr key={rowIndex}>
 							{row.map((cell, cellIndex) => (

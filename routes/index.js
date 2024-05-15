@@ -66,6 +66,21 @@ router.post("/addquestion", async function (req, res) {
 		const questionAdded = await db(
 			`INSERT INTO questions (questions) VALUES ("${question}")`
 		);
+
+		const questionIdObject = await db(`SELECT LAST_INSERT_ID()`); // came as [oBJECT [OBJECT]...
+		// const questionId = questionIdObject[0];
+		console.log("this is", questionIdObject);
+
+		for (const answer of answers) {
+			// have to loop as ans is an arr
+			const isCorrect = answer.isCorrect ? 1 : 0; // stopped issue of passing undefined
+			await db(
+				`INSERT INTO multipleChoiceAnswers (answer_text, is_correct, question_id,) VALUES ("${answer.text}", "${isCorrect}", "${questionIdObject}")`
+			);
+		}
+		res
+			.status(200)
+			.send({ message: "Question and answers added successfully" });
 	} catch (err) {
 		res.status(400).send({ message: err.message });
 	}

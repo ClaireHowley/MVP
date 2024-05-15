@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function SubmitQuestion() {
+export default function SubmitQuestion({ getQuestions }) {
 	const [questionData, setQuestionData] = useState({
 		question: "", // "question" is the name of the input fields in the event that is triggered, value is what is entered (e.target,name, e.target.value)
 		answers: [
@@ -29,9 +29,10 @@ export default function SubmitQuestion() {
 		} else if (name === "checkbox") {
 			const updatedAnswers = questionData.answers.map((answer, i) => {
 				return index === i
-					? { ...answer, isCorrect: checked }
+					? { ...answer, isCorrect: checked === true }
 					: { ...answer, isCorrect: false }; // ensures only one checkbox at a time can be ticked
 			});
+
 			setQuestionData({ ...questionData, answers: updatedAnswers });
 		}
 	};
@@ -53,8 +54,10 @@ export default function SubmitQuestion() {
 			const data = await response.json();
 			console.log("here:", data);
 
+			getQuestions();
+
 			setQuestionData({
-				// reset after successsful passing of data -- doesn't work
+				// reset after successsful pasing of data
 				question: "",
 				answers: [
 					{ text: "", isCorrect: false },

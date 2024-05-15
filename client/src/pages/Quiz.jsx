@@ -1,23 +1,13 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 
-function Quiz() {
-	let [questions, setQuestions] = useState([]);
+function Quiz({ getQuestions, questions, setQuestions }) {
 	let [currentQuestion, setCurrentQuestion] = useState(0);
 	let [quizEnded, setQuizEnded] = useState(false);
 
 	useEffect(() => {
 		getQuestions();
 	}, []);
-
-	// issue is why useEffect is only loading on first loadS
-
-	async function getQuestions() {
-		const response = await fetch("/api");
-
-		const data = await response.json();
-		setQuestions(data);
-	}
 
 	function nextQuestion() {
 		if (currentQuestion < questions.length - 1) {
@@ -65,6 +55,7 @@ function Quiz() {
 
 	return (
 		<div id="QuizPage">
+			{" "}
 			<div className="quizQuestionAnswerBox">
 				{questions.length > 0 && questions[currentQuestion] ? (
 					<div key={questions[currentQuestion].question_id}>

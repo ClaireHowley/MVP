@@ -3,8 +3,18 @@ import Homepage from "./pages/Homepage";
 import ReviewPage from "./pages/ReviewPage";
 import Quiz from "./pages/Quiz";
 import SubmitQuestion from "./pages/SubmitQuestion";
+import { useState } from "react";
 
 function App() {
+	const [questions, setQuestions] = useState([]);
+
+	async function getQuestions() {
+		const response = await fetch("/api");
+
+		const data = await response.json();
+		setQuestions(data);
+	}
+
 	return (
 		<>
 			<div>
@@ -19,8 +29,16 @@ function App() {
 					<Routes>
 						<Route path="/" element={<Homepage />} />
 						<Route path="/review" element={<ReviewPage />} />
-						<Route path="/quiz" element={<Quiz />} />
-						<Route path="/submit" element={<SubmitQuestion />} />
+						<Route
+							path="/quiz"
+							element={
+								<Quiz questions={questions} getQuestions={getQuestions} />
+							}
+						/>
+						<Route
+							path="/submit"
+							element={<SubmitQuestion getQuestions={getQuestions} />}
+						/>
 					</Routes>
 				</div>
 			</div>
